@@ -76,6 +76,7 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
+
       <File Path="$PSRCDIR/sources_1/new/axi_master.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -105,6 +106,11 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PPRDIR/../ip_repo/myip_1.0/hdl/myip_v1_0_S00_AXI.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sim_1/new/tb_axi_master_slave.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>

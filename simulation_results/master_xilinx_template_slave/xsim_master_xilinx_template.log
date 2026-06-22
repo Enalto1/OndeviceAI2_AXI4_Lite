@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# xsim v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Mon Jun 22 07:24:25 2026
+# Process ID         : 31232
+# Current directory  : D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave
+# Command line       : xsim.exe -log D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave/xsim_master_xilinx_template.log -mode tcl -source {xsim.dir/tb_axi_master_slave_sim/xsim_script.tcl}
+# Log file           : D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave/xsim_master_xilinx_template.log
+# Journal file       : D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave\xsim.jou
+# Running On         : DESKTOP-68I0CBS
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 19045
+# Processor Detail   : AMD Ryzen 5 5600G with Radeon Graphics         
+# CPU Frequency      : 3893 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 31988 MB
+# Swap memory        : 5368 MB
+# Total Virtual      : 37357 MB
+# Available Virtual  : 14762 MB
+#-----------------------------------------------------------
+source xsim.dir/tb_axi_master_slave_sim/xsim_script.tcl
+# xsim {tb_axi_master_slave_sim} -wdb {D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave/tb_axi_master_slave_xilinx_template.wdb} -autoloadwcfg -tclbatch {D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave/run_wave.tcl}
+Time resolution is 1 ps
+source D:/OndeviceAI2_AXI4_Lite/simulation_results/master_xilinx_template_slave/run_wave.tcl
+## log_wave -r /tb_axi_master_slave/*
+## run all
+[86 ns] AXI WRITE Addr=0x00000000 WDATA=0x11111111
+[136 ns] AXI WRITE Addr=0x00000004 WDATA=0x22222222
+[186 ns] AXI WRITE Addr=0x00000008 WDATA=0x33333333
+[236 ns] AXI WRITE Addr=0x0000000c WDATA=0x44444444
+[286 ns] AXI READ  Addr=0x00000000 RDATA=0x11111111
+[336 ns] AXI READ  Addr=0x00000004 RDATA=0x22222222
+[386 ns] AXI READ  Addr=0x00000008 RDATA=0x33333333
+[436 ns] AXI READ  Addr=0x0000000c RDATA=0x44444444
+PASS: custom AXI4_master + Xilinx AXI template slave simulation completed
+$finish called at time : 545 ns : File "D:/OndeviceAI2_AXI4_Lite/20260619_AXI4_Master_Slave/20260619_AXI4_Master_Slave.srcs/sim_1/new/tb_axi_master_slave.sv" Line 171
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Jun 22 07:24:26 2026...

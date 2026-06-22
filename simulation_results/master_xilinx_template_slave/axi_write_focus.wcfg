@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_axi_master_slave_xilinx_template.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_axi_master_slave" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="50000000fs"></ZoomStartTime>
+      <ZoomEndTime time="260000000fs"></ZoomEndTime>
+      <Cursor1Time time="86000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wave_markers>
+      <marker time="86000000" label="WRITE0" />
+      <marker time="136000000" label="WRITE1" />
+      <marker time="186000000" label="WRITE2" />
+      <marker time="236000000" label="WRITE3" />
+      <marker time="286000000" label="READ0" />
+      <marker time="336000000" label="READ1" />
+      <marker time="386000000" label="READ2" />
+      <marker time="436000000" label="READ3" />
+   </wave_markers>   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/ACLK" type="logic">
+      <obj_property name="ElementShortName">ACLK</obj_property>
+      <obj_property name="ObjectShortName">ACLK</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/ARESETn" type="logic">
+      <obj_property name="ElementShortName">ARESETn</obj_property>
+      <obj_property name="ObjectShortName">ARESETn</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider_Master_control">
+      <obj_property name="label">Master control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/transfer" type="logic">
+      <obj_property name="ElementShortName">transfer</obj_property>
+      <obj_property name="ObjectShortName">transfer</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/write" type="logic">
+      <obj_property name="ElementShortName">write</obj_property>
+      <obj_property name="ObjectShortName">write</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/addr" type="array">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/wdata" type="array">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider_AXI_write_address_data_response">
+      <obj_property name="label">AXI write address/data/response</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/AWADDR" type="array">
+      <obj_property name="ElementShortName">AWADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AWADDR[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/AWVALID" type="logic">
+      <obj_property name="ElementShortName">AWVALID</obj_property>
+      <obj_property name="ObjectShortName">AWVALID</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/AWREADY" type="logic">
+      <obj_property name="ElementShortName">AWREADY</obj_property>
+      <obj_property name="ObjectShortName">AWREADY</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/WDATA" type="array">
+      <obj_property name="ElementShortName">WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/WVALID" type="logic">
+      <obj_property name="ElementShortName">WVALID</obj_property>
+      <obj_property name="ObjectShortName">WVALID</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/WREADY" type="logic">
+      <obj_property name="ElementShortName">WREADY</obj_property>
+      <obj_property name="ObjectShortName">WREADY</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/BRESP" type="array">
+      <obj_property name="ElementShortName">BRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">BRESP[1:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/BVALID" type="logic">
+      <obj_property name="ElementShortName">BVALID</obj_property>
+      <obj_property name="ObjectShortName">BVALID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/BREADY" type="logic">
+      <obj_property name="ElementShortName">BREADY</obj_property>
+      <obj_property name="ObjectShortName">BREADY</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider_Slave_registers">
+      <obj_property name="label">Slave registers</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/dut_slave/slv_reg0" type="array">
+      <obj_property name="ElementShortName">slv_reg0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg0[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/dut_slave/slv_reg1" type="array">
+      <obj_property name="ElementShortName">slv_reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg1[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/dut_slave/slv_reg2" type="array">
+      <obj_property name="ElementShortName">slv_reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg2[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/tb_axi_master_slave/dut_slave/slv_reg3" type="array">
+      <obj_property name="ElementShortName">slv_reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg3[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
+
