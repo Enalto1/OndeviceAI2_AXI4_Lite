@@ -1,0 +1,74 @@
+# Xilinx/Vivado generated files
+.Xil/
+**/.Xil/
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.dcp
+*.rpx
+*.rpt
+*.html
+*.xml.bak
+
+# Vivado generated project outputs
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.gen/
+*.runs/
+xsim.dir/
+**/xsim.dir/
+
+# Simulation/elaboration scratch
+*.sdb
+*.rlx
+*.dbg
+*.reloc
+*.rtti
+*.svtype
+*.type
+*.xdbg
+*.vdi
+*.vds
+*.exe
+
+# Vitis/Eclipse generated state and build output
+.metadata/
+**/.metadata/
+Debug/
+Release/
+**/Debug/
+**/Release/
+RemoteSystemsTempFiles/
+**/RemoteSystemsTempFiles/
+.settings/
+**/.settings/
+*.o
+*.d
+*.a
+*.elf
+*.map
+*.size
+
+# Editor/OS noise
+.DS_Store
+Thumbs.db
+# Vitis generated hardware platforms/BSPs
+**/vitis_workspace/*_wrapper/
+**/Vitis_workspace/*_wrapper/
+
+# Generated FPGA/software images
+*.bit
+*.bin
+*.mmi
+*.ltx
+*.xsa.bak
+
+# Vitis IDE local state
+.analytics
+**/.analytics
+_ide/
+**/_ide/
