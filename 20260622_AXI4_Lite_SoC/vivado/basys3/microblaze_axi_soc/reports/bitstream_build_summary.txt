@@ -1,0 +1,39 @@
+Vivado executable expected: D:/Xilinx/Vivado/2020.2/bin/vivado.bat
+Vivado version: 2020.2
+Project root: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC
+Project: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.xpr
+Block design: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.srcs/sources_1/bd/microblaze_axi_soc_bd/microblaze_axi_soc_bd.bd
+Wrapper: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.gen/sources_1/bd/microblaze_axi_soc_bd/hdl/microblaze_axi_soc_bd_wrapper.v
+XDC: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/constraints/basys3/basys3_axi_soc.xdc
+Report directory: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/reports
+Export directory: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/exports
+Project open: PASS
+Required BD cells: PASS
+Required BD external ports: PASS
+Basys3 XDC in constrs_1: PASS
+validate_bd_design: PASS
+HDL wrapper refresh: PASS
+Resetting synth_1 and impl_1 runs for a fresh build
+Synthesis: RUN
+Synthesis run status: synth_design Complete!
+Synthesis run progress: 100%
+Synthesis reports: PASS
+Implementation through route_design: RUN
+Implementation run status: route_design Complete!
+Implementation run progress: 100%
+Power report: PASS
+Implementation reports: PASS
+Timing WNS from get_timing_paths: 1.772
+Timing WHS from get_timing_paths: 0.023
+DRC total violations: 11
+DRC ERROR count: 0
+DRC CRITICAL WARNING count: 0
+DRC WARNING count: 11
+Bitstream generation: RUN
+Bitstream run status: write_bitstream Complete!
+Bitstream run progress: 100%
+Source bitstream: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.runs/impl_1/microblaze_axi_soc_bd_wrapper.bit
+Exported bitstream: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/exports/microblaze_axi_soc.bit
+Exported XSA: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/exports/microblaze_axi_soc.xsa
+XSA include bit: yes
+RESULT: PASS

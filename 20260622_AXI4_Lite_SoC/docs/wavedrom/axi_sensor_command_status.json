@@ -1,0 +1,14 @@
+{
+  "head": { "text": "axi_sensor_core COMMAND and STATUS timing" },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p..............." },
+    { "name": "AXI write", "wave": "x3x..4x........", "data": ["CONTROL enable", "COMMAND start"] },
+    { "name": "WSTRB", "wave": "x3x..3x........", "data": ["byte0/1", "byte0/1"] },
+    { "name": "sr04_enable", "wave": "0.1............" },
+    { "name": "dht_enable", "wave": "0.1............" },
+    { "name": "sr04_start_pulse", "wave": "0.....10......." },
+    { "name": "dht_start_pulse", "wave": "0.....10......." },
+    { "name": "STATUS", "wave": "x..3...4.......", "data": ["enable mirrors", "live bits"] }
+  ],
+  "config": { "hscale": 1 }
+}

@@ -1,0 +1,16 @@
+{
+  "signal": [
+    { "name": "CONTROL.read_ack", "wave": "x3x...........", "data": ["0=NACK final, 1=ACK"] },
+    { "name": "COMMAND start", "wave": "x.3x..........", "data": ["START"] },
+    { "name": "COMMAND read_byte", "wave": "x.....3x......", "data": ["READ_BYTE"] },
+    { "name": "SDA from target", "wave": "z.....3456789z", "data": ["b7", "b6", "b5", "b4", "b3", "b2", "b1"] },
+    { "name": "cmd_valid", "wave": "0..10..10....." },
+    { "name": "busy", "wave": "0...1.0.1...0." },
+    { "name": "rx_byte", "wave": "x..........3x.", "data": ["received byte"] },
+    { "name": "RXDATA read", "wave": "x............3", "data": ["0xNN"] },
+    { "name": "sda_drive_low", "wave": "0.........3.0.", "data": ["ACK if read_ack=1"] },
+    { "name": "done_sticky", "wave": "0....1.0....1." }
+  ],
+  "config": { "hscale": 1 },
+  "head": { "text": "axi_i2c_core conceptual read-byte sequence" }
+}

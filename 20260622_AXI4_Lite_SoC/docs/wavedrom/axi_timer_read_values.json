@@ -1,0 +1,17 @@
+{
+  "head": {
+    "text": "axi_timer_core readback of stopwatch and watch values"
+  },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p.............." },
+    { "name": "AR channel", "wave": "x3x..4x..5x...", "data": ["STOPWATCH_VALUE", "WATCH_VALUE", "STATUS"] },
+    { "name": "RVALID", "wave": "0.10.10.10...." },
+    { "name": "RDATA", "wave": "x.3x.4x.5x....", "data": ["sw h/m/s/ms", "wt h/m/s/ms", "status bits"] },
+    { "name": "stopwatch_datapath outputs", "wave": "3.............", "data": ["dynamic"] },
+    { "name": "watch_fnd_adapter outputs", "wave": "3.............", "data": ["dynamic"] },
+    { "name": "reserved bits", "wave": "0............." }
+  ],
+  "config": {
+    "hscale": 1
+  }
+}

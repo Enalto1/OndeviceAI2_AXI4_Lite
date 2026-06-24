@@ -1,0 +1,16 @@
+{
+  "signal": [
+    { "name": "AXI write CONTROL", "wave": "x3x........", "data": ["enable/read_ack"] },
+    { "name": "cmd_ready", "wave": "1....0..1.." },
+    { "name": "AXI write COMMAND", "wave": "x...3x.....", "data": ["START/STOP/WR/RD"] },
+    { "name": "cmd_valid", "wave": "0....10...." },
+    { "name": "cmd[2:0]", "wave": "x....3x....", "data": ["selected"] },
+    { "name": "busy", "wave": "0.....1..0." },
+    { "name": "done", "wave": "0........10" },
+    { "name": "done_sticky", "wave": "0........1." },
+    { "name": "nack_sticky", "wave": "0.........1", "data": ["if nack"] },
+    { "name": "AXI read STATUS", "wave": "x.........3", "data": ["busy/ready/done/nack"] }
+  ],
+  "config": { "hscale": 1 },
+  "head": { "text": "axi_i2c_core command/status timing intent" }
+}

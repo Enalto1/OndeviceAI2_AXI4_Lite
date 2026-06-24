@@ -1,0 +1,26 @@
+Vivado executable: D:/Xilinx/Vivado/2020.2/bin/vivado.bat
+Vivado version: 2020.2
+Project: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.xpr
+BD: microblaze_axi_soc_bd
+XDC: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/constraints/basys3/basys3_axi_soc.xdc
+XDC added to constrs_1: PASS
+XDC added on this run: 0
+Top wrapper: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.gen/sources_1/bd/microblaze_axi_soc_bd/hdl/microblaze_axi_soc_bd_wrapper.v
+reset_i physical pin: G2 PMOD JA4 external active-low reset
+reset_i external board polarity: active-low
+reset_i BD port polarity before: ACTIVE_LOW
+proc_sys_reset_0 CONFIG.C_EXT_RESET_HIGH before: 1
+Direct proc_sys_reset polarity change: not used; CONFIG.C_EXT_RESET_HIGH is read-only in the opened BD project
+Reset inverter present: yes, rstn_inv_0 util_vector_logic NOT
+reset_i BD port polarity after: ACTIVE_LOW
+proc_sys_reset_0 CONFIG.C_EXT_RESET_HIGH after: 1
+BD modified on this run: 0
+HDL wrapper regenerated on this run: 0
+Reset can be revised by editing the reset section of basys3_axi_soc.xdc or copying a snippet from constraints/basys3/reset_options
+validate_bd_design: PASS
+XDC port existence check: PASS
+Duplicate PACKAGE_PIN check: PASS
+Clock constraint check: PASS
+Synthesis: skipped
+Implementation: skipped
+Bitstream: skipped

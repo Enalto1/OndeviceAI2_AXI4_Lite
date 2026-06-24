@@ -1,0 +1,18 @@
+{
+  "head": {
+    "text": "axi_timer_core CONTROL and COMMAND writes"
+  },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p.............." },
+    { "name": "AXI write", "wave": "x3x..4x..5x...", "data": ["CONTROL", "COMMAND clear", "COMMAND edit"] },
+    { "name": "WSTRB", "wave": "x3x..3x..3x...", "data": ["byte0/1", "byte0", "byte1"] },
+    { "name": "CONTROL reg", "wave": "x.3............", "data": ["run/down/set/target"] },
+    { "name": "stopwatch_run", "wave": "0.1............" },
+    { "name": "stopwatch_clear pulse", "wave": "0.....10......" },
+    { "name": "watch_edit pulse", "wave": "0.........10.." },
+    { "name": "COMMAND readback", "wave": "3.............", "data": ["always zero"] }
+  ],
+  "config": {
+    "hscale": 1
+  }
+}

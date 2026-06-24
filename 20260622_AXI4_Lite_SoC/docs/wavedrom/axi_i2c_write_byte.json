@@ -1,0 +1,16 @@
+{
+  "signal": [
+    { "name": "AXI write TXDATA", "wave": "x3x.............", "data": ["address/data byte"] },
+    { "name": "COMMAND start", "wave": "x.3x............", "data": ["START"] },
+    { "name": "COMMAND write_byte", "wave": "x.....3x........", "data": ["WRITE_BYTE"] },
+    { "name": "COMMAND stop", "wave": "x...........3x..", "data": ["STOP"] },
+    { "name": "cmd_valid", "wave": "0..10..10....10." },
+    { "name": "busy", "wave": "0...1.0.1.0..1.0" },
+    { "name": "scl_drive_low", "wave": "0..1010101010100" },
+    { "name": "sda_drive_low", "wave": "0..1100110011000" },
+    { "name": "done_sticky", "wave": "0....1.0.1.0..1." },
+    { "name": "nack_sticky", "wave": "0.........1.....", "data": ["if NACK"] }
+  ],
+  "config": { "hscale": 1 },
+  "head": { "text": "axi_i2c_core conceptual write-byte sequence" }
+}

@@ -1,0 +1,37 @@
+help
+version
+periph list
+
+gpio version
+fnd version
+timer version
+sensor version
+spi version
+i2c version
+
+gpio led 00FF
+gpio read
+gpio led 0000
+gpio read
+
+fnd time 12 34 5 1
+fnd mode timer
+fnd sel low
+fnd enable
+fnd output
+
+timer sw clear
+timer sw run
+timer sw read
+timer sw stop
+timer sw read
+
+sensor status
+sensor version
+
+spi status
+spi version
+
+i2c status
+i2c bus
+i2c version

@@ -1,0 +1,13 @@
+External reset port: reset_i
+Physical pin: G2 PMOD JA4 external active-low reset
+Board active level: active-low, asserted when the external JA4/G2 reset button pulls the signal to GND
+XDC PULLUP: true
+BD reset_i CONFIG.POLARITY: ACTIVE_LOW
+proc_sys_reset_0 CONFIG.C_EXT_RESET_HIGH: 1
+Connection: reset_i -> rstn_inv_0/Op1 -> rstn_inv_0/Res -> proc_sys_reset_0/ext_reset_in
+Direct proc_sys_reset external reset polarity change: unavailable/read-only in this project
+BD reset adapter present: yes, rstn_inv_0 util_vector_logic NOT inverter
+BD modified on this run: 0
+HDL wrapper regenerated on this run: 0
+Normal GPIO buttons remain mapped to btn_i[4:0]
+Revision snippets: constraints/basys3/reset_options

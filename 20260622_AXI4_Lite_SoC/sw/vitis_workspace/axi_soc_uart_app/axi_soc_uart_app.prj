@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="axi_soc_uart_app" location="D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/sw/vitis_workspace/axi_soc_uart_app" platform="D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/sw/vitis_workspace/microblaze_axi_soc_platform/export/microblaze_axi_soc_platform/microblaze_axi_soc_platform.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="axi_soc_uart_app_system" sysConfig="microblaze_axi_soc_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="997bcc1c5e2b28043b6d873369fe015f">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1656602744" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.361081127" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

@@ -72,3 +72,13 @@ Thumbs.db
 **/.analytics
 _ide/
 **/_ide/
+
+# Vivado local work directories
+**/vivado_work/
+
+# Vitis generated hardware platform workspaces
+**/vitis_workspace/*_platform/
+
+# Vivado/xsim GUI scratch helpers
+simulation_results/**/help_*.tcl
+simulation_results/**/xsim_help.tcl

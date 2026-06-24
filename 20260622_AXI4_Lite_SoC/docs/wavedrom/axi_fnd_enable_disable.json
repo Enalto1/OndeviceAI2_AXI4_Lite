@@ -1,0 +1,17 @@
+{
+  "head": {
+    "text": "axi_fnd_core display_enable gating"
+  },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p.............." },
+    { "name": "CONTROL.display_enable", "wave": "0..1......0...", "data": ["enable", "disable"] },
+    { "name": "fnd_controller.fnd_com", "wave": "x..34343434...", "data": ["1110", "1101", "1011", "0111", "1110"] },
+    { "name": "fnd_controller.fnd_data", "wave": "x..35353535...", "data": ["digit0", "digit1", "digit2", "digit3", "digit0"] },
+    { "name": "fnd_com_o", "wave": "3..43434343...", "data": ["1111 blank", "1110", "1101", "1011", "0111", "1111 blank"] },
+    { "name": "fnd_data_o", "wave": "3..53535353...", "data": ["FF blank", "digit0", "digit1", "digit2", "digit3", "FF blank"] },
+    { "name": "FND_OUTPUT", "wave": "3..53535353...", "data": ["blank readback", "active readback", "active readback", "active readback", "active readback", "blank readback"] }
+  ],
+  "config": {
+    "hscale": 1
+  }
+}

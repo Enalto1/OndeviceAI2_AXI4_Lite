@@ -1,0 +1,18 @@
+{
+  "head": {
+    "text": "axi_timer_core watch edit pulse and value update"
+  },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p................" },
+    { "name": "watch_set_mode", "wave": "0..1..........0.." },
+    { "name": "watch_time_sel", "wave": "x..3............", "data": ["minute"] },
+    { "name": "watch_digit_sel", "wave": "x..3............", "data": ["ones"] },
+    { "name": "COMMAND[8] write", "wave": "0.....10........" },
+    { "name": "i_edit_cmd gated", "wave": "0.....30........", "data": ["up"] },
+    { "name": "WATCH_RAW_DIGITS", "wave": "x.....3.........", "data": ["selected digit increments"] },
+    { "name": "WATCH_VALUE", "wave": "x......3........", "data": ["adapter output updates"] }
+  ],
+  "config": {
+    "hscale": 1
+  }
+}

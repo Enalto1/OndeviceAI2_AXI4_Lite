@@ -1,0 +1,42 @@
+<mxfile host="app.diagrams.net" modified="2026-06-22T22:36:26+09:00" agent="Codex" version="24.7.17" type="device">
+  <diagram id="microblaze_axi_soc_integration_ready" name="MicroBlaze AXI SoC Integration Ready">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="pc" value="PC terminal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f2ff;strokeColor=#3b6ea8;" vertex="1" parent="1"><mxGeometry x="60" y="80" width="150" height="60" as="geometry"/></mxCell>
+        <mxCell id="uart" value="AXI UART Lite&#xa;0x4060_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2fff0;strokeColor=#4d8f3a;" vertex="1" parent="1"><mxGeometry x="280" y="80" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="mb" value="MicroBlaze&#xa;software command parser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff6e6;strokeColor=#b2762b;" vertex="1" parent="1"><mxGeometry x="540" y="70" width="220" height="90" as="geometry"/></mxCell>
+        <mxCell id="axi" value="AXI Interconnect / SmartConnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4edff;strokeColor=#7054a3;" vertex="1" parent="1"><mxGeometry x="520" y="240" width="260" height="80" as="geometry"/></mxCell>
+        <mxCell id="gpio" value="axi_gpio_core&#xa;0x44A0_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="120" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="fnd" value="axi_fnd_core&#xa;0x44A1_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="360" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="timer" value="axi_timer_core&#xa;0x44A2_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="600" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="sensor" value="axi_sensor_core&#xa;0x44A3_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="840" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="spi" value="axi_spi_core&#xa;0x44A4_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="1080" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="i2c" value="axi_i2c_core&#xa;0x44A5_0000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="1320" y="430" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="gpioio" value="LED / switch / button pins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ff;strokeColor=#5a84a3;" vertex="1" parent="1"><mxGeometry x="110" y="610" width="200" height="60" as="geometry"/></mxCell>
+        <mxCell id="fndio" value="Basys3 FND pins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ff;strokeColor=#5a84a3;" vertex="1" parent="1"><mxGeometry x="360" y="610" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="sensorio" value="SR04 / DHT11 PMOD wiring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ff;strokeColor=#5a84a3;" vertex="1" parent="1"><mxGeometry x="830" y="610" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="spiio" value="SPI PMOD bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ff;strokeColor=#5a84a3;" vertex="1" parent="1"><mxGeometry x="1080" y="610" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="i2cio" value="I2C PMOD bus&#xa;external pull-ups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ff;strokeColor=#5a84a3;" vertex="1" parent="1"><mxGeometry x="1300" y="610" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="uvm" value="UVM deferred&#xa;not in board datapath" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="60" y="780" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="pc" target="uart"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="uart" target="mb"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="mb" target="axi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="egpio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="gpio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="efnd" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="fnd"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="etimer" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="timer"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="esensor" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="sensor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="espi" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="spi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ei2c" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="i2c"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="egpioio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="gpio" target="gpioio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="efndio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="fnd" target="fndio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="esensorio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="sensor" target="sensorio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="espiio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="spi" target="spiio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ei2cio" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="i2c" target="i2cio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="timerfnd" value="software updates display registers" style="endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#b2762b;" edge="1" parent="1" source="timer" target="fnd"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="sensorfnd" value="software bridges sensor values" style="endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#b2762b;" edge="1" parent="1" source="sensor" target="fnd"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

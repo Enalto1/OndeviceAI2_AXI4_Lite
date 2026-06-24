@@ -1,0 +1,57 @@
+<mxfile host="app.diagrams.net" modified="2026-06-22T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="axi_i2c_core_wrapper" name="axi_i2c_core_wrapper">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="mb" value="MicroBlaze&#xa;AXI master" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="axi" value="AXI4-Lite bus&#xa;base 0x44A5_0000" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="240" y="250" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="wrapper" value="axi_i2c_core&#xa;AXI4-Lite wrapper&#xa;future RTL path: rtl_work/axi_peripherals/axi_i2c_core/hdl/axi_i2c_core.v" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="360" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="regs" value="Register bank&#xa;CONTROL&#xa;TXDATA&#xa;COMMAND&#xa;RXDATA&#xa;STATUS&#xa;BUS_STATUS&#xa;VERSION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="130" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="master" value="reused i2c_master_core.sv&#xa;cmd_valid/cmd&#xa;tx_byte/read_ack&#xa;cmd_ready/done/busy/nack/rx_byte&#xa;scl/sda drive_low" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="670" y="210" width="120" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="pads" value="open-drain pads&#xa;inout i2c_scl_io&#xa;inout i2c_sda_io&#xa;external pull-ups required" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="900" y="250" width="160" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="slave" value="i2c_slave_core.sv&#xa;optional/reference-only&#xa;not instantiated in first wrapper" style="rounded=0;dashed=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="900" y="430" width="190" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="seq" value="Software low-level sequence&#xa;START -> WRITE_BYTE -> READ_BYTE -> STOP&#xa;no hard-coded sensor protocol" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="440" y="540" width="390" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge1" value="AXI reads/writes" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="mb" target="axi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge2" value="local register access" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge3" value="COMMAND priority -> cmd_valid/cmd" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="regs" target="master">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge4" value="RX/status" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="master" target="regs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="440"/>
+              <mxPoint x="560" y="440"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="drive low / release / sample pad" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="master" target="pads">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge6" value="future optional use only" style="endArrow=none;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="slave" target="pads">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

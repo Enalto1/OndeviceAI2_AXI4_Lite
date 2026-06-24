@@ -1,0 +1,18 @@
+{
+  "signal": [
+    { "name": "uart_rx_cmd", "wave": "x3.0....", "data": ["cmd"] },
+    { "name": "software_decode", "wave": "0.1.0...", "data": ["parse"] },
+    { "name": "axi_awvalid", "wave": "0..10...", "data": ["addr"] },
+    { "name": "axi_wvalid", "wave": "0..10...", "data": ["wdata"] },
+    { "name": "axi_bvalid", "wave": "0...10..", "data": ["ok"] },
+    { "name": "axi_arvalid", "wave": "0....10.", "data": ["addr"] },
+    { "name": "axi_rvalid", "wave": "0.....10", "data": ["rdata/status"] },
+    { "name": "uart_tx_rsp", "wave": "x......3", "data": ["response"] }
+  ],
+  "edge": [
+    "uart_rx_cmd[0]~>software_decode[0] command parsed by MicroBlaze software",
+    "software_decode[0]~>axi_awvalid[0] memory-mapped write or read issued",
+    "axi_rvalid[0]~>uart_tx_rsp[0] software formats UART response"
+  ],
+  "config": { "hscale": 2 }
+}

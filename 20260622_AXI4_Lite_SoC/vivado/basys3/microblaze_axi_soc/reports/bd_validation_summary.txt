@@ -1,0 +1,14 @@
+Vivado version: 2020.2
+Project: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc
+Part: xc7a35tcpg236-1
+Board part: part-only: board_part unavailable or not selected
+BD: microblaze_axi_soc_bd
+IP repo: D:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/ip_repo
+Interconnect: smartconnect_0
+validate_bd_design: PASS
+HDL wrapper: GENERATED
+HDL wrapper path: d:/OndeviceAI2_AXI4_Lite/20260622_AXI4_Lite_SoC/vivado/basys3/microblaze_axi_soc/microblaze_axi_soc.gen/sources_1/bd/microblaze_axi_soc_bd/hdl/microblaze_axi_soc_bd_wrapper.v
+Synthesis: skipped
+Implementation: skipped
+Bitstream: skipped
+Packaged IP metadata normalized/verified: 6 component.xml files; modified on this run: 0

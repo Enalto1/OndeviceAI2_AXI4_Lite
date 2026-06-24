@@ -1,0 +1,14 @@
+﻿{
+  "head": { "text": "axi_gpio_core Button Edge Flag Intent" },
+  "signal": [
+    { "name": "ACLK", "wave": "p..........." },
+    { "name": "btn_i[0]", "wave": "0.1........" },
+    { "name": "btn_raw_sync[0]", "wave": "0..1......." },
+    { "name": "btn_debounced[0]", "wave": "0.....1...." },
+    { "name": "button_debounce o_btn", "wave": "0.....10..." },
+    { "name": "BTN_EDGE[0]", "wave": "0.....1..0.", "data": ["set", "clear"] },
+    { "name": "read BTN_EDGE", "wave": "0......10.." },
+    { "name": "write BTN_EDGE_CLR[0]", "wave": "0........10" }
+  ],
+  "foot": { "text": "Existing button_debounce output is an edge pulse. Debounced level readback requires a later documented implementation choice." }
+}

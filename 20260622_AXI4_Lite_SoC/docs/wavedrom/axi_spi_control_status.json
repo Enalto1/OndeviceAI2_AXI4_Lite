@@ -1,0 +1,14 @@
+{
+  "signal": [
+    { "name": "AXI write CONTROL", "wave": "x3x........", "data": ["enable/mode"] },
+    { "name": "AXI write CLKDIV", "wave": "x.3x.......", "data": ["divider"] },
+    { "name": "AXI write TXDATA", "wave": "x..3x......", "data": ["tx byte"] },
+    { "name": "AXI write COMMAND", "wave": "x...3x.....", "data": ["start"] },
+    { "name": "start_pulse", "wave": "0....10...." },
+    { "name": "busy", "wave": "0.....1..0." },
+    { "name": "done_sticky", "wave": "0........1." },
+    { "name": "AXI read STATUS", "wave": "x.........3", "data": ["done/busy/mode"] }
+  ],
+  "config": { "hscale": 1 },
+  "head": { "text": "axi_spi_core control/status timing intent" }
+}

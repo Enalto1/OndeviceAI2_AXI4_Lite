@@ -1,0 +1,11 @@
+{
+  "head": { "text": "axi_sensor_core DHT11 start-line intent" },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p.................." },
+    { "name": "dht_start_pulse", "wave": "010................" },
+    { "name": "dht11_io", "wave": "1..0.........z....." },
+    { "name": "dht_valid_live", "wave": "0...............10." },
+    { "name": "DHT_VALUE", "wave": "x...............3..", "data": ["humidity/temp"] }
+  ],
+  "config": { "hscale": 1 }
+}

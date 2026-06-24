@@ -1,0 +1,154 @@
+#ifndef AXI_SOC_REGS_H
+#define AXI_SOC_REGS_H
+
+#define AXI_REG_VERSION             0x1CU
+#define AXI_PERIPH_VERSION_1_0      0x00010000U
+
+#define GPIO_REG_OUT                0x00U
+#define GPIO_REG_IN                 0x04U
+#define GPIO_REG_SET                0x08U
+#define GPIO_REG_CLR                0x0CU
+#define GPIO_REG_TOGGLE             0x10U
+#define GPIO_REG_BTN_EDGE           0x14U
+#define GPIO_REG_BTN_EDGE_CLR       0x18U
+#define GPIO_LED_MASK               0x0000FFFFU
+#define GPIO_BTN_MASK               0x0000001FU
+#define GPIO_IN_SW_MASK             0x0000FFFFU
+#define GPIO_IN_BTN_DEB_SHIFT       16U
+#define GPIO_IN_BTN_RAW_SHIFT       21U
+#define GPIO_IN_BTN_DEB_MASK        (GPIO_BTN_MASK << GPIO_IN_BTN_DEB_SHIFT)
+#define GPIO_IN_BTN_RAW_MASK        (GPIO_BTN_MASK << GPIO_IN_BTN_RAW_SHIFT)
+
+#define FND_REG_CONTROL             0x00U
+#define FND_REG_TIMER_VALUE         0x04U
+#define FND_REG_SENSOR_VALUE        0x08U
+#define FND_REG_OUTPUT              0x0CU
+#define FND_REG_VERSION             0x1CU
+#define FND_CONTROL_ENABLE          0x00000001U
+#define FND_CONTROL_MODE_SHIFT      1U
+#define FND_CONTROL_MODE_MASK       0x00000006U
+#define FND_CONTROL_SEL             0x00000008U
+#define FND_TIMER_MSEC_SHIFT        0U
+#define FND_TIMER_SEC_SHIFT         7U
+#define FND_TIMER_MIN_SHIFT         13U
+#define FND_TIMER_HOUR_SHIFT        19U
+#define FND_SENSOR_DISTANCE_SHIFT   0U
+#define FND_SENSOR_HUMIDITY_SHIFT   9U
+#define FND_SENSOR_TEMPERATURE_SHIFT 17U
+#define FND_OUTPUT_COM_MASK         0x0000000FU
+#define FND_OUTPUT_DATA_SHIFT       8U
+#define FND_OUTPUT_DATA_MASK        0x0000FF00U
+#define FND_MODE_STOPWATCH          0U
+#define FND_MODE_WATCH              1U
+#define FND_MODE_SR04               2U
+#define FND_MODE_DHT11              3U
+
+#define TIMER_REG_CONTROL           0x00U
+#define TIMER_REG_COMMAND           0x04U
+#define TIMER_REG_STOPWATCH_VALUE   0x08U
+#define TIMER_REG_WATCH_VALUE       0x0CU
+#define TIMER_REG_WATCH_RAW_DIGITS  0x10U
+#define TIMER_REG_STATUS            0x14U
+#define TIMER_REG_VERSION           0x1CU
+#define TIMER_CONTROL_SW_RUN        0x00000001U
+#define TIMER_CONTROL_SW_DOWN       0x00000002U
+#define TIMER_CONTROL_WATCH_SET     0x00000100U
+#define TIMER_CONTROL_WATCH_TARGET_SHIFT 9U
+#define TIMER_CONTROL_WATCH_TARGET_MASK  0x00000600U
+#define TIMER_CONTROL_WATCH_DIGIT_SEL    0x00000800U
+#define TIMER_COMMAND_SW_CLEAR      0x00000001U
+#define TIMER_COMMAND_WATCH_UP      0x00000100U
+#define TIMER_COMMAND_WATCH_DOWN    0x00000200U
+#define TIMER_PACK_MSEC_SHIFT       0U
+#define TIMER_PACK_SEC_SHIFT        7U
+#define TIMER_PACK_MIN_SHIFT        13U
+#define TIMER_PACK_HOUR_SHIFT       19U
+#define TIMER_PACK_MSEC_MASK        0x0000007FU
+#define TIMER_PACK_SEC_MASK         0x00001F80U
+#define TIMER_PACK_MIN_MASK         0x0007E000U
+#define TIMER_PACK_HOUR_MASK        0x00F80000U
+#define TIMER_WATCH_TARGET_HOUR     0U
+#define TIMER_WATCH_TARGET_MIN      1U
+#define TIMER_WATCH_TARGET_SEC      2U
+
+#define SENSOR_REG_CONTROL          0x00U
+#define SENSOR_REG_COMMAND          0x04U
+#define SENSOR_REG_SR04_VALUE       0x08U
+#define SENSOR_REG_DHT_VALUE        0x0CU
+#define SENSOR_REG_STATUS           0x10U
+#define SENSOR_REG_VERSION          0x1CU
+#define SENSOR_CONTROL_SR04_ENABLE  0x00000001U
+#define SENSOR_CONTROL_DHT_ENABLE   0x00000100U
+#define SENSOR_COMMAND_SR04_START   0x00000001U
+#define SENSOR_COMMAND_DHT_START    0x00000100U
+#define SENSOR_SR04_DISTANCE_MASK   0x000001FFU
+#define SENSOR_DHT_HUMIDITY_MASK    0x000000FFU
+#define SENSOR_DHT_TEMPERATURE_SHIFT 8U
+#define SENSOR_DHT_TEMPERATURE_MASK 0x0000FF00U
+#define SENSOR_STATUS_SR04_TRIG     0x00000001U
+#define SENSOR_STATUS_DHT_VALID     0x00000100U
+#define SENSOR_STATUS_SR04_ENABLE   0x00010000U
+#define SENSOR_STATUS_DHT_ENABLE    0x01000000U
+
+#define SPI_REG_CONTROL             0x00U
+#define SPI_REG_CLKDIV              0x04U
+#define SPI_REG_TXDATA              0x08U
+#define SPI_REG_COMMAND             0x0CU
+#define SPI_REG_RXDATA              0x10U
+#define SPI_REG_STATUS              0x14U
+#define SPI_REG_VERSION             0x1CU
+#define SPI_CONTROL_ENABLE          0x00000001U
+#define SPI_CONTROL_CPOL            0x00000002U
+#define SPI_CONTROL_CPHA            0x00000004U
+#define SPI_CLKDIV_MASK             0x0000FFFFU
+#define SPI_TXDATA_MASK             0x000000FFU
+#define SPI_COMMAND_START           0x00000001U
+#define SPI_RXDATA_MASK             0x000000FFU
+#define SPI_STATUS_BUSY             0x00000001U
+#define SPI_STATUS_DONE_STICKY      0x00000002U
+#define SPI_STATUS_ENABLE           0x00000100U
+#define SPI_STATUS_CPOL             0x00000200U
+#define SPI_STATUS_CPHA             0x00000400U
+#define SPI_POLL_TIMEOUT            1000000U
+
+#define I2C_REG_CONTROL             0x00U
+#define I2C_REG_TXDATA              0x04U
+#define I2C_REG_COMMAND             0x08U
+#define I2C_REG_RXDATA              0x0CU
+#define I2C_REG_STATUS              0x10U
+#define I2C_REG_BUS_STATUS          0x14U
+#define I2C_REG_VERSION             0x1CU
+#define I2C_CONTROL_ENABLE          0x00000001U
+#define I2C_CONTROL_READ_ACK        0x00000002U
+#define I2C_TXDATA_MASK             0x000000FFU
+#define I2C_COMMAND_START           0x00000001U
+#define I2C_COMMAND_STOP            0x00000002U
+#define I2C_COMMAND_WRITE_BYTE      0x00000004U
+#define I2C_COMMAND_READ_BYTE       0x00000008U
+#define I2C_RXDATA_MASK             0x000000FFU
+#define I2C_STATUS_BUSY             0x00000001U
+#define I2C_STATUS_CMD_READY        0x00000002U
+#define I2C_STATUS_DONE_STICKY      0x00000004U
+#define I2C_STATUS_NACK_STICKY      0x00000008U
+#define I2C_STATUS_NACK_LIVE        0x00000010U
+#define I2C_STATUS_ENABLE           0x00000100U
+#define I2C_STATUS_READ_ACK         0x00000200U
+#define I2C_BUS_SCL_IN              0x00000001U
+#define I2C_BUS_SDA_IN              0x00000002U
+#define I2C_BUS_SCL_DRIVE_LOW       0x00000004U
+#define I2C_BUS_SDA_DRIVE_LOW       0x00000008U
+#define I2C_POLL_TIMEOUT            1000000U
+
+#define TIMER_PACK_VALUE(msec, sec, min, hour) \
+    ((((msec) & 0x7FU) << TIMER_PACK_MSEC_SHIFT) | \
+     (((sec)  & 0x3FU) << TIMER_PACK_SEC_SHIFT)  | \
+     (((min)  & 0x3FU) << TIMER_PACK_MIN_SHIFT)  | \
+     (((hour) & 0x1FU) << TIMER_PACK_HOUR_SHIFT))
+
+#define FND_PACK_TIMER_VALUE(msec, sec, min, hour) TIMER_PACK_VALUE((msec), (sec), (min), (hour))
+#define FND_PACK_SENSOR_VALUE(distance, humidity, temperature) \
+    ((((distance)    & 0x1FFU) << FND_SENSOR_DISTANCE_SHIFT) | \
+     (((humidity)    & 0x0FFU) << FND_SENSOR_HUMIDITY_SHIFT) | \
+     (((temperature) & 0x0FFU) << FND_SENSOR_TEMPERATURE_SHIFT))
+
+#endif

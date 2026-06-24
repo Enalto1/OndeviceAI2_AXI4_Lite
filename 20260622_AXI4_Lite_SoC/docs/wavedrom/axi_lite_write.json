@@ -1,0 +1,17 @@
+﻿{
+  "head": { "text": "AXI4-Lite Write Example" },
+  "signal": [
+    { "name": "ACLK", "wave": "p........" },
+    { "name": "AWADDR", "wave": "x3.x.....", "data": ["addr"] },
+    { "name": "AWVALID", "wave": "01.0....." },
+    { "name": "AWREADY", "wave": "0.10....." },
+    { "name": "WDATA", "wave": "x4.x.....", "data": ["wdata"] },
+    { "name": "WSTRB", "wave": "x5.x.....", "data": ["strb"] },
+    { "name": "WVALID", "wave": "01.0....." },
+    { "name": "WREADY", "wave": "0.10....." },
+    { "name": "BVALID", "wave": "0..10...." },
+    { "name": "BREADY", "wave": "1........" },
+    { "name": "register update", "wave": "0..10...." }
+  ],
+  "foot": { "text": "Handshake style comes from the Xilinx AXI4-Lite slave template." }
+}

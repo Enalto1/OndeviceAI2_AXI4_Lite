@@ -1,0 +1,18 @@
+{
+  "head": {
+    "text": "axi_fnd_core register update to reused fnd_controller inputs"
+  },
+  "signal": [
+    { "name": "s00_axi_aclk", "wave": "p.............." },
+    { "name": "AXI write", "wave": "x3x..4x.......", "data": ["TIMER_VALUE", "SENSOR_VALUE"] },
+    { "name": "WSTRB", "wave": "x3x..3x.......", "data": ["strobed bytes", "strobed bytes"] },
+    { "name": "TIMER_VALUE reg", "wave": "x.3...........", "data": ["msec/sec/min/hour update"] },
+    { "name": "SENSOR_VALUE reg", "wave": "x.....3.......", "data": ["distance/humidity/temp update"] },
+    { "name": "fnd_controller timer inputs", "wave": "x..3..........", "data": ["new timer fields"] },
+    { "name": "fnd_controller sensor inputs", "wave": "x......3......", "data": ["new sensor fields"] },
+    { "name": "FND_OUTPUT readback", "wave": "x.........3...", "data": ["dynamic gated pins"] }
+  ],
+  "config": {
+    "hscale": 1
+  }
+}

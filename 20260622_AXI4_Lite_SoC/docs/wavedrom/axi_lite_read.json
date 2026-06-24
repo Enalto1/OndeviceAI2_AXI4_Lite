@@ -1,0 +1,14 @@
+﻿{
+  "head": { "text": "AXI4-Lite Read Example" },
+  "signal": [
+    { "name": "ACLK", "wave": "p........" },
+    { "name": "ARADDR", "wave": "x3.x.....", "data": ["addr"] },
+    { "name": "ARVALID", "wave": "01.0....." },
+    { "name": "ARREADY", "wave": "0.10....." },
+    { "name": "RDATA", "wave": "x..4.x...", "data": ["rdata"] },
+    { "name": "RRESP", "wave": "x..5.x...", "data": ["OKAY"] },
+    { "name": "RVALID", "wave": "0..10...." },
+    { "name": "RREADY", "wave": "1........" }
+  ],
+  "foot": { "text": "Reserved addresses return zero data with normal template response unless later changed." }
+}

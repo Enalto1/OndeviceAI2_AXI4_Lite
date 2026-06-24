@@ -1,0 +1,18 @@
+BD cells
+/axi_fnd_core_0
+/axi_gpio_core_0
+/axi_i2c_core_0
+/axi_sensor_core_0
+/axi_spi_core_0
+/axi_timer_core_0
+/axi_uartlite_0
+/dlmb_bram_if_cntlr
+/dlmb_v10
+/ilmb_bram_if_cntlr
+/ilmb_v10
+/lmb_bram
+/mdm_0
+/microblaze_0
+/proc_sys_reset_0
+/smartconnect_0
+/xlconstant_reset_locked

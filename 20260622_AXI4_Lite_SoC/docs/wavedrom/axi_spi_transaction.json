@@ -1,0 +1,16 @@
+{
+  "signal": [
+    { "name": "clk", "wave": "p................." },
+    { "name": "start", "wave": "010...............", "data": ["COMMAND[0]"] },
+    { "name": "busy", "wave": "0.1............0.." },
+    { "name": "done", "wave": "0...............10" },
+    { "name": "ss_n", "wave": "1.0............1.." },
+    { "name": "sclk", "wave": "0..1010101010100.." },
+    { "name": "mosi", "wave": "x.3.3.3.3.3.3.3.x", "data": ["b7", "b6", "b5", "b4", "b3", "b2", "b1"] },
+    { "name": "miso", "wave": "x.4.4.4.4.4.4.4.x", "data": ["r7", "r6", "r5", "r4", "r3", "r2", "r1"] },
+    { "name": "rx_data", "wave": "x...............5.", "data": ["rx byte"] }
+  ],
+  "config": { "hscale": 1 },
+  "head": { "text": "axi_spi_core byte transfer timing intent" },
+  "foot": { "text": "CPOL/CPHA select the exact sample/update edges; this diagram shows the mode-0 intent." }
+}

@@ -1,0 +1,11 @@
+Vivado report_bd_address unavailable in this environment: invalid command name "report_bd_address"
+The exact address map below was created from the BD address segment objects immediately after create_bd_addr_seg.
+
+Name	ExpectedBase	ActualBase	Range	ExpectedHigh	ActualHigh	Status	Segment
+AXI UART Lite	0x40600000	0x40600000	0x00010000	0x4060FFFF	0x4060FFFF	PASS	/microblaze_0/Data/SEG_axi_uartlite_0_Reg
+axi_gpio_core	0x44A00000	0x44A00000	0x00010000	0x44A0FFFF	0x44A0FFFF	PASS	/microblaze_0/Data/SEG_axi_gpio_core_0_Reg
+axi_fnd_core	0x44A10000	0x44A10000	0x00010000	0x44A1FFFF	0x44A1FFFF	PASS	/microblaze_0/Data/SEG_axi_fnd_core_0_Reg
+axi_timer_core	0x44A20000	0x44A20000	0x00010000	0x44A2FFFF	0x44A2FFFF	PASS	/microblaze_0/Data/SEG_axi_timer_core_0_Reg
+axi_sensor_core	0x44A30000	0x44A30000	0x00010000	0x44A3FFFF	0x44A3FFFF	PASS	/microblaze_0/Data/SEG_axi_sensor_core_0_Reg
+axi_spi_core	0x44A40000	0x44A40000	0x00010000	0x44A4FFFF	0x44A4FFFF	PASS	/microblaze_0/Data/SEG_axi_spi_core_0_Reg
+axi_i2c_core	0x44A50000	0x44A50000	0x00010000	0x44A5FFFF	0x44A5FFFF	PASS	/microblaze_0/Data/SEG_axi_i2c_core_0_Reg

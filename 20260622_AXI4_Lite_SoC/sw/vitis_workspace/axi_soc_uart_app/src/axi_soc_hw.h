@@ -1,0 +1,91 @@
+#ifndef AXI_SOC_HW_H
+#define AXI_SOC_HW_H
+
+#include "xil_types.h"
+#include "xil_io.h"
+#include "xparameters.h"
+
+#define AXI_SOC_SW_VERSION "prompt24-0.1"
+#define AXI_SOC_PERIPH_RANGE_BYTES 0x00010000U
+
+#ifndef AXI_UARTLITE_BASE
+#if defined(XPAR_AXI_UARTLITE_0_BASEADDR)
+#define AXI_UARTLITE_BASE XPAR_AXI_UARTLITE_0_BASEADDR
+#elif defined(XPAR_AXI_UARTLITE_0_S_AXI_BASEADDR)
+#define AXI_UARTLITE_BASE XPAR_AXI_UARTLITE_0_S_AXI_BASEADDR
+#else
+#define AXI_UARTLITE_BASE 0x40600000U
+#endif
+#endif
+
+#ifndef AXI_GPIO_BASE
+#if defined(XPAR_AXI_GPIO_CORE_0_S00_AXI_BASEADDR)
+#define AXI_GPIO_BASE XPAR_AXI_GPIO_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_GPIO_CORE_0_BASEADDR)
+#define AXI_GPIO_BASE XPAR_AXI_GPIO_CORE_0_BASEADDR
+#else
+#define AXI_GPIO_BASE 0x44A00000U
+#endif
+#endif
+
+#ifndef AXI_FND_BASE
+#if defined(XPAR_AXI_FND_CORE_0_S00_AXI_BASEADDR)
+#define AXI_FND_BASE XPAR_AXI_FND_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_FND_CORE_0_BASEADDR)
+#define AXI_FND_BASE XPAR_AXI_FND_CORE_0_BASEADDR
+#else
+#define AXI_FND_BASE 0x44A10000U
+#endif
+#endif
+
+#ifndef AXI_TIMER_BASE
+#if defined(XPAR_AXI_TIMER_CORE_0_S00_AXI_BASEADDR)
+#define AXI_TIMER_BASE XPAR_AXI_TIMER_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_TIMER_CORE_0_BASEADDR)
+#define AXI_TIMER_BASE XPAR_AXI_TIMER_CORE_0_BASEADDR
+#else
+#define AXI_TIMER_BASE 0x44A20000U
+#endif
+#endif
+
+#ifndef AXI_SENSOR_BASE
+#if defined(XPAR_AXI_SENSOR_CORE_0_S00_AXI_BASEADDR)
+#define AXI_SENSOR_BASE XPAR_AXI_SENSOR_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_SENSOR_CORE_0_BASEADDR)
+#define AXI_SENSOR_BASE XPAR_AXI_SENSOR_CORE_0_BASEADDR
+#else
+#define AXI_SENSOR_BASE 0x44A30000U
+#endif
+#endif
+
+#ifndef AXI_SPI_BASE
+#if defined(XPAR_AXI_SPI_CORE_0_S00_AXI_BASEADDR)
+#define AXI_SPI_BASE XPAR_AXI_SPI_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_SPI_CORE_0_BASEADDR)
+#define AXI_SPI_BASE XPAR_AXI_SPI_CORE_0_BASEADDR
+#else
+#define AXI_SPI_BASE 0x44A40000U
+#endif
+#endif
+
+#ifndef AXI_I2C_BASE
+#if defined(XPAR_AXI_I2C_CORE_0_S00_AXI_BASEADDR)
+#define AXI_I2C_BASE XPAR_AXI_I2C_CORE_0_S00_AXI_BASEADDR
+#elif defined(XPAR_AXI_I2C_CORE_0_BASEADDR)
+#define AXI_I2C_BASE XPAR_AXI_I2C_CORE_0_BASEADDR
+#else
+#define AXI_I2C_BASE 0x44A50000U
+#endif
+#endif
+
+static inline u32 axi_soc_read32(UINTPTR base, u32 offset)
+{
+    return Xil_In32(base + (UINTPTR)offset);
+}
+
+static inline void axi_soc_write32(UINTPTR base, u32 offset, u32 value)
+{
+    Xil_Out32(base + (UINTPTR)offset, value);
+}
+
+#endif

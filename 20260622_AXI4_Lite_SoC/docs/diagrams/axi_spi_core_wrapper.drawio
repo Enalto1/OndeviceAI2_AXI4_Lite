@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2026-06-22T19:05:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="axi_spi_core_wrapper" name="axi_spi_core_wrapper">
+    <mxGraphModel dx="1100" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="mb" value="MicroBlaze&#xa;AXI4-Lite master" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="230" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="axi" value="AXI4-Lite slave shell&#xa;s00_axi_*" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="210" width="190" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="regs" value="Register bank&#xa;CONTROL CLKDIV TXDATA&#xa;COMMAND RXDATA STATUS VERSION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="540" y="195" width="230" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="master" value="spi_master_byte.sv&#xa;start clk_div cpol cpha tx_data&#xa;rx_data busy done" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="835" y="205" width="220" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="pins" value="External SPI pins&#xa;spi_sclk_o&#xa;spi_mosi_o&#xa;spi_miso_i&#xa;spi_ss_n_o" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="840" y="430" width="215" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="slave" value="spi_slave_byte.sv&#xa;optional future slave/loopback support&#xa;not required for first wrapper" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="445" width="230" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="mb" target="axi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="regs" target="master">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="master" target="pins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="slave" target="master">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

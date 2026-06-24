@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2026-06-22T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="axi_fnd_core_wrapper" name="axi_fnd_core_wrapper">
+    <mxGraphModel dx="1300" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="mb" value="MicroBlaze&lt;br&gt;AXI master&lt;br&gt;software-updated values" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="axi" value="AXI4-Lite slave shell&lt;br&gt;Vivado 2020.2 template style&lt;br&gt;32-bit data, 6-bit local address" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="260" y="220" width="230" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="regs" value="Register bank&lt;br&gt;CONTROL @ 0x00&lt;br&gt;TIMER_VALUE @ 0x04&lt;br&gt;SENSOR_VALUE @ 0x08&lt;br&gt;FND_OUTPUT @ 0x0C&lt;br&gt;VERSION @ 0x1C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="540" y="205" width="220" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl" value="CONTROL fields&lt;br&gt;display_enable&lt;br&gt;main_mode&lt;br&gt;display_sel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="540" y="420" width="180" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="timer" value="TIMER_VALUE fields&lt;br&gt;msec, sec&lt;br&gt;min, hour" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="sensor" value="SENSOR_VALUE fields&lt;br&gt;distance&lt;br&gt;humidity&lt;br&gt;temperature" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="780" y="380" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="fnd" value="reused fnd_controller.v&lt;br&gt;scan, digit split, BCD decode&lt;br&gt;active-low fnd_com/fnd_data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="235" width="220" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="gate" value="display_enable output gating&lt;br&gt;0: fnd_com_o=1111, fnd_data_o=FF&lt;br&gt;1: pass controller outputs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="235" width="230" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="pins" value="Basys3 FND pins&lt;br&gt;fnd_com_o[3:0]&lt;br&gt;fnd_data_o[7:0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="AXI writes/reads" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="mb" target="axi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="decode + WSTRB" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="mode/select" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="ctrl" target="fnd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="msec/sec/min/hour" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="timer" target="fnd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="distance/humidity/temperature" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="sensor" target="fnd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="raw controller outputs" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="fnd" target="gate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="final gated outputs" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="gate" target="pins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="final output readback" style="endArrow=block;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="gate" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,30 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-06-22T00:00:00.000Z" agent="Codex" version="20.8.16">
+  <diagram id="axi_gpio_core_wrapper" name="axi_gpio_core Wrapper">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="mb" value="MicroBlaze&#xa;AXI4-Lite master" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="40" y="120" width="170" height="70" as="geometry"/></mxCell>
+        <mxCell id="axi" value="Xilinx AXI4-Lite slave template shell&#xa;s00_axi_* ports&#xa;preserve handshake logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="270" y="100" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="regs" value="Register bank&#xa;GPIO_OUT 0x00&#xa;GPIO_IN 0x04&#xa;GPIO_SET/CLR/TOGGLE&#xa;BTN_EDGE/CLR&#xa;VERSION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="560" y="90" width="220" height="150" as="geometry"/></mxCell>
+        <mxCell id="led" value="led_o[15:0]&#xa;driven by GPIO_OUT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="890" y="70" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="sw" value="sw_i[15:0]&#xa;async switches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="890" y="190" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="syncsw" value="switch synchronizers&#xa;sw_sync[15:0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="650" y="300" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="btn" value="btn_i[4:0]&#xa;async buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="890" y="320" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="syncbtn" value="button raw synchronizers&#xa;btn_raw_sync[4:0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="650" y="420" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="deb" value="button debounce path&#xa;reuse 5 explicit button_debounce instances for edge pulses&#xa;debounced level readback needs later documented adaptation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="380" y="390" width="230" height="120" as="geometry"/></mxCell>
+        <mxCell id="edge" value="edge flag latch&#xa;BTN_EDGE[4:0]&#xa;clear by BTN_EDGE_CLR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="380" y="550" width="230" height="80" as="geometry"/></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="mb" target="axi" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="axi" target="regs" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="regs" target="led" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="sw" target="syncsw" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="syncsw" target="regs" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="btn" target="syncbtn" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="syncbtn" target="regs" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="btn" target="deb" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="deb" target="edge" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="edge" target="regs" style="endArrow=block;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

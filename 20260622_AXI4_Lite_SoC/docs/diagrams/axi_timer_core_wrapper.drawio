@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2026-06-22T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="axi_timer_core_wrapper" name="axi_timer_core_wrapper">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="mb" value="MicroBlaze&lt;br&gt;AXI master&lt;br&gt;UART command software" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="axi" value="AXI4-Lite slave shell&lt;br&gt;Vivado 2020.2 template style&lt;br&gt;32-bit data, 6-bit local address" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="230" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="regs" value="Register bank&lt;br&gt;CONTROL 0x00&lt;br&gt;COMMAND 0x04&lt;br&gt;STOPWATCH_VALUE 0x08&lt;br&gt;WATCH_VALUE 0x0C&lt;br&gt;WATCH_RAW_DIGITS 0x10&lt;br&gt;STATUS 0x14&lt;br&gt;VERSION 0x1C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="180" width="240" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl" value="CONTROL levels&lt;br&gt;stopwatch_run/down&lt;br&gt;watch_set_mode&lt;br&gt;watch_time_sel&lt;br&gt;watch_digit_sel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="450" width="220" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmd" value="COMMAND write-one pulses&lt;br&gt;stopwatch_clear&lt;br&gt;watch_edit_up/down&lt;br&gt;one clock only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="570" y="610" width="220" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="sw" value="reused stopwatch_datapath.v&lt;br&gt;i_runstop, i_clear, i_mode&lt;br&gt;msec/sec/min/hour" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="900" y="130" width="250" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="wt" value="reused watch_datapath.v&lt;br&gt;i_set_mode, i_time_sel&lt;br&gt;i_digit_sel, i_edit_cmd&lt;br&gt;raw split digits" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="900" y="360" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="adapter" value="reused watch_fnd_adapter.v&lt;br&gt;split digits to packed&lt;br&gt;hour/min/sec/msec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="375" width="230" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="reads" value="Readback mux&lt;br&gt;STOPWATCH_VALUE&lt;br&gt;WATCH_VALUE&lt;br&gt;WATCH_RAW_DIGITS&lt;br&gt;STATUS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="145" width="230" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="fnd" value="Later software bridge&lt;br&gt;MicroBlaze reads Timer&lt;br&gt;then writes axi_fnd_core&lt;br&gt;no direct Timer-to-FND wiring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="255" width="210" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="tcu" value="top_control_unit.v&lt;br&gt;reference-only&lt;br&gt;legacy button/switch FSM&lt;br&gt;not instantiated" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="890" y="650" width="250" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="legacy" value="top_stopwatch_watch.v&lt;br&gt;reference-only legacy top&lt;br&gt;mixes debounce, FSM, datapaths, FND&lt;br&gt;not wrapped" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="650" width="260" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="AXI writes/reads" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="mb" target="axi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="decode + WSTRB" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="axi" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="levels" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="ctrl" target="sw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="levels + gated edit pulse" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="ctrl" target="wt">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="one-clock pulses" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="cmd" target="sw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="edit up/down pulse" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="cmd" target="wt">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="raw digits" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="wt" target="adapter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="packed watch values" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="adapter" target="reads">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="stopwatch values" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="sw" target="reads">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="read data" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="reads" target="regs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="software display update later" style="endArrow=block;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="mb" target="fnd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
