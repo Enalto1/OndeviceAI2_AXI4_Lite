@@ -1,0 +1,26 @@
+COMPILER=
+ARCHIVER=
+CP=cp
+COMPILER_FLAGS=
+EXTRA_COMPILER_FLAGS=
+LIB=libxil.a
+
+RELEASEDIR=../../../lib
+INCLUDEDIR=../../../include
+INCLUDES=-I./. -I$(INCLUDEDIR)
+
+INCLUDEFILES=$(wildcard *.h)
+LIBSOURCES=$(wildcard *.c)
+OBJECTS=$(LIBSOURCES:.c=.o)
+
+libs:
+	echo "Compiling gpio..."
+	$(COMPILER) $(COMPILER_FLAGS) $(EXTRA_COMPILER_FLAGS) $(INCLUDES) $(LIBSOURCES)
+	$(ARCHIVER) -r $(RELEASEDIR)/$(LIB) $(OBJECTS)
+	$(MAKE) clean
+
+include:
+	$(CP) $(INCLUDEFILES) $(INCLUDEDIR)
+
+clean:
+	-del /Q $(OBJECTS) 2>NUL

@@ -5,6 +5,16 @@ void GPIO_SetMode(GPIO_TypeDef *GPIOx, int mode)
 	GPIOx->CR = mode;
 }
 
+uint32_t GPIO_GetODR(GPIO_TypeDef *GPIOx)
+{
+	return GPIOx->ODR;
+}
+
+uint32_t GPIO_GetCR(GPIO_TypeDef *GPIOx)
+{
+	return GPIOx->CR;
+}
+
 void GPIO_WritePort(GPIO_TypeDef *GPIOx, uint32_t data)
 {
 	GPIOx -> ODR = data;
@@ -29,5 +39,4 @@ uint32_t GPIO_ReadPin(GPIO_TypeDef *GPIOx,uint32_t gpio_pin)
 {
 	return (GPIOx -> IDR & gpio_pin)? 1 : 0;
 }
-
 
