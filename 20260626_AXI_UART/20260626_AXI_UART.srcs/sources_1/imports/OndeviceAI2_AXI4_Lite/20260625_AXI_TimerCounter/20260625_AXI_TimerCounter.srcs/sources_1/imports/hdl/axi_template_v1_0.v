@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-	module Timer_v1_0 #
+	module uart_v1_0 #
 	(
 		// Users to add parameters here
 
@@ -15,7 +15,9 @@
 	)
 	(
 		// Users to add ports here
-    	output wire           intr    	,
+		output wire tx				,
+		input  wire rx	,
+		output wire intr,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -43,27 +45,27 @@
 		input wire  s00_axi_rready
 	);
 
+	wire [7:0]	tx_data		;
+	wire 		tx_valid	;
+	wire 		tx_ready	;
+	wire [7:0]	rx_data		;
+	wire 		rx_valid	;
+	wire 		rx_ie		;
 
-    	wire          cnt_en      ;
-    	wire          intr_en     ;
-    	wire [31:0]   psc         ;
-    	wire [31:0]   arr         ;
-    	wire          cnt_valid   ;
-    	wire [31:0]   i_cnt       ;
-		wire [31:0]   o_cnt       ;
+	assign intr = rx_ie & rx_valid;
+
 
 // Instantiation of Axi Bus Interface S00_AXI
-	Timer_v1_0_S00_AXI # ( 
+	uart_v1_0_S00_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
 		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
-	) Timer_v1_0_S00_AXI_inst (
-		.cnt_en   (cnt_en   ),
-		.intr_en  (intr_en  ),
-		.psc      (psc      ),
-		.arr      (arr      ),
-		.cnt_valid(cnt_valid),
-		.i_cnt    (i_cnt    ),
-		.o_cnt	  (o_cnt	),
+	) uart_v1_0_S00_AXI_inst (
+	    .tx_data		(tx_data),
+	    .tx_valid		(tx_valid),
+	    .tx_ready		(tx_ready),
+	    .rx_data		(rx_data),
+	    .rx_valid		(rx_valid),
+		.rx_ie			(rx_ie	),
 
 		.S_AXI_ACLK(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),
@@ -89,18 +91,30 @@
 	);
 
 	// Add user logic here
-	TimerCounter uTimerCNT(
-    	.clk      (s00_axi_aclk)   	 ,
-    	.rst_n    (s00_axi_aresetn)  ,
-    	.cnt_en   (cnt_en   )   	 ,
-    	.intr_en  (intr_en  )   	 ,
-    	.psc      (psc      )   	 ,
-    	.arr      (arr      )   	 ,
-    	.cnt_valid(cnt_valid)   	 ,
-    	.i_cnt    (i_cnt    )   	 ,
-    	.o_cnt    (o_cnt    )   	 ,
-    	.intr     (intr     )             
+	uart_top U_uart(
+	    .clk		(s00_axi_aclk)		,
+	    .rst_n		(s00_axi_aresetn),
+	    .tx_data	(tx_data),
+	    .tx_valid	(tx_valid),
+	    .tx_ready	(tx_ready),
+	    .tx			(tx		),
+	    .rx			(rx		),
+	    .rx_data	(rx_data),
+	    .rx_valid	(rx_valid)
 	);
 	// User logic ends
 
 	endmodule
+
+
+	    // input  wire       clk,
+	    // input  wire       rst_n,
+	    // // TX 인터페이스
+	    // input  wire [7:0] tx_data,
+	    // input  wire       tx_valid,
+	    // output wire       tx_ready,
+	    // output wire       tx,
+	    // // RX 인터페이스
+	    // input  wire       rx,
+	    // output wire [7:0] rx_data,
+	    // output wire       rx_valid

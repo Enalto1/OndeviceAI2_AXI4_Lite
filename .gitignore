@@ -59,6 +59,7 @@ Thumbs.db
 # Vitis generated hardware platforms/BSPs
 **/vitis_workspace/*_wrapper/
 **/Vitis_workspace/*_wrapper/
+**/vitis_wortkspace/*_wrapper/
 
 # Generated FPGA/software images
 *.bit
@@ -78,6 +79,7 @@ _ide/
 
 # Vitis generated hardware platform workspaces
 **/vitis_workspace/*_platform/
+**/vitis_wortkspace/*_platform/
 
 # Vivado/xsim GUI scratch helpers
 simulation_results/**/help_*.tcl

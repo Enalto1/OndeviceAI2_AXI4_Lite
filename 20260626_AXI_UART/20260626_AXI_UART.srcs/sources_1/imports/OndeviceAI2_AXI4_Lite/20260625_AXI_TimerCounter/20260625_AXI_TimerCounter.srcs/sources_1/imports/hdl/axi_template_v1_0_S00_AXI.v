@@ -1,21 +1,21 @@
 
 `timescale 1 ns / 1 ps
 
-	module Timer_v1_0_S00_AXI #
+	module uart_v1_0_S00_AXI #
 	(
 		parameter integer C_S_AXI_DATA_WIDTH	= 32,
 		parameter integer C_S_AXI_ADDR_WIDTH	= 4
 	)
 	(
 		//User to add ports here
-		//Timer internal signal
-    	output  wire          cnt_en      ,
-    	output  wire          intr_en     ,
-    	output  wire [31:0]   psc         ,
-    	output  wire [31:0]   arr         ,
-    	output  wire          cnt_valid   ,
-    	output  wire [31:0]   i_cnt       ,
-    	input wire [31:0]     o_cnt       ,
+		output wire [7:0] 	tx_data,
+		output wire 		tx_valid,
+		output wire 		tx_ready,
+
+		input wire [7:0] 	rx_data,
+		input wire 			rx_valid,
+		output wire 		rx_ie		,
+
 		//User ports ends
 		//Do not modify the ports beyond this line
 
@@ -71,27 +71,25 @@
 	//-- Signals for user logic register space example
 	//------------------------------------------------
 	//-- Number of Slave Registers 4
-	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg0; //TIM_CR,Intr
-	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg1; //PSC
-	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg2; //ARR
-	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg3; //CNT
+	reg [C_S_AXI_DATA_WIDTH-1:0]	uart_sr ; //slv_reg0
+	reg [C_S_AXI_DATA_WIDTH-1:0]	uart_tdr; //slv_reg1
+	reg [C_S_AXI_DATA_WIDTH-1:0]	uart_rdr; //slv_reg2
+	reg [C_S_AXI_DATA_WIDTH-1:0]	uart_cr;  //slv_reg3
 	
 	wire	 slv_reg_rden;
 	wire	 slv_reg_wren;
 	reg [C_S_AXI_DATA_WIDTH-1:0]	 reg_data_out;
 	integer	 byte_index;
 	reg	 aw_en;
-	// External Signals assignments
-	reg cnt_valid_r;
 
-	assign cnt_en 		= slv_reg0[0];
-	assign intr_en 		= slv_reg0[1];
-	assign psc 			= slv_reg1;
-	assign arr 			= slv_reg2;
-	assign i_cnt 		= slv_reg3;
-	assign cnt_valid 	= cnt_valid_r;
+
+	reg tx_valid_r;
+	reg rx_flag;
 
 	// I/O Connections assignments
+	assign tx_data 	= uart_tdr[7:0];
+	assign tx_valid = tx_valid_r;
+	assign rx_ie 	= uart_cr[0];
 
 	assign S_AXI_AWREADY	= axi_awready;
 	assign S_AXI_WREADY	= axi_wready;
@@ -191,61 +189,67 @@
 	// These registers are cleared when reset (active low) is applied.
 	// Slave register write enable is asserted when valid address and data are available
 	// and the slave is ready to accept the write address and write data.
-	assign slv_reg_wren = axi_wready && S_AXI_WVALID && axi_awready && S_AXI_AWVALID;
 
-	always @( posedge S_AXI_ACLK )
-	begin
-	  if ( S_AXI_ARESETN == 1'b0 )
-	    begin
-	      slv_reg0 <= 0;
-	      slv_reg1 <= 0;
-	      slv_reg2 <= 0;
-	      slv_reg3 <= 0;
-	    end 
-	  else begin
-		cnt_valid_r <= 1'b0;
-	    if (slv_reg_wren)
-	      begin
-	        case ( axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] )
-	          2'h0:
-	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
-	              if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-	                // Respective byte enables are asserted as per write strobes 
-	                // Slave register 0
-	                slv_reg0[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-	              end  
-	          2'h1:
-	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
-	              if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-	                // Respective byte enables are asserted as per write strobes 
-	                // Slave register 1
-	                slv_reg1[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-	              end  
-	          2'h2:
-	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
-	              if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-	                // Respective byte enables are asserted as per write strobes 
-	                // Slave register 2
-	                slv_reg2[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-	              end  
-	          2'h3:
-	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
-	              if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-	                // Respective byte enables are asserted as per write strobes 
-	                // Slave register 3
-	                slv_reg3[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-					cnt_valid_r <= 1'b1;
-	              end  
-	          default : begin
-	                      slv_reg0 <= slv_reg0;
-	                      slv_reg1 <= slv_reg1;
-	                      slv_reg2 <= slv_reg2;
-	                      slv_reg3 <= slv_reg3;
-	                    end
-	        endcase
-	      end
-	  end
-	end    
+
+
+	assign slv_reg_wren = axi_wready && S_AXI_WVALID && axi_awready && S_AXI_AWVALID;
+	// SR은 상태 표시라 cpu가 write 할 필요가 없다. cpu가 read만 한다.
+	// always @( posedge S_AXI_ACLK ) begin
+	// 	if ( S_AXI_ARESETN == 1'b0 ) begin
+	// 		uart_sr   	<= 0;
+	// 	end 
+	// 	else begin
+	// 		if (slv_reg_wren && axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h3) begin
+	// 		    uart_sr <= S_AXI_WDATA;
+	// 		end
+	// 	end
+	// end 
+
+
+	always @( posedge S_AXI_ACLK ) begin
+		if ( S_AXI_ARESETN == 1'b0 ) begin
+			uart_tdr   	<= 0;
+			tx_valid_r 	  <= 1'b0;
+		end 
+		else begin
+			tx_valid_r 	  <= 1'b0;
+			if (slv_reg_wren && axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h1) begin
+		    	if ( S_AXI_WSTRB[0] == 1 ) begin
+		    		uart_tdr[7:0] <= S_AXI_WDATA[7:0];
+					tx_valid_r 	  <= 1'b1;
+		    	end
+		    end
+		end
+	end
+
+
+	always @( posedge S_AXI_ACLK ) begin
+		if ( S_AXI_ARESETN == 1'b0 ) begin
+			uart_rdr   	<= 0;
+			rx_flag 	<= 1'b0;
+		end 
+		else begin
+			if(rx_valid) begin
+				uart_rdr 	<= rx_data; // Latching
+				rx_flag 	<= 1'b1;
+			end
+			if (slv_reg_rden && axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h2) begin
+				rx_flag <= 1'b0;
+			end
+		end
+	end
+
+
+	always @( posedge S_AXI_ACLK ) begin
+		if ( S_AXI_ARESETN == 1'b0 ) begin
+			uart_cr   	<= 0;
+		end 
+		else begin
+			if (slv_reg_wren && axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 2'h3) begin
+			    uart_cr <= S_AXI_WDATA;
+			end
+		end
+	end 
 
 	// Implement write response logic generation
 	// The write response and response valid signals are asserted by the slave 
@@ -349,10 +353,10 @@
 	begin
 	      // Address decoding for reading registers
 	      case ( axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] )
-	        2'h0   : reg_data_out <= slv_reg0;
-	        2'h1   : reg_data_out <= slv_reg1;
-	        2'h2   : reg_data_out <= slv_reg2;
-	        2'h3   : reg_data_out <= o_cnt; 	//slv_reg3
+	        2'h0   : reg_data_out <= {{30{1'b0}},rx_flag,tx_ready};	//uart status register slv_reg0
+	        2'h1   : reg_data_out <= uart_tdr;					//slv_reg1
+	        2'h2   : reg_data_out <= uart_rdr;					//slv_reg2
+	        2'h3   : reg_data_out <= uart_cr; 					//slv_reg3
 	        default : reg_data_out <= 0;
 	      endcase
 	end
@@ -381,6 +385,9 @@
 	// User logic ends
 
 	endmodule
+
+
+	// ******************************************************************************************************************//
     	// output  wire          cnt_en      ,
     	// output  wire          intr_en     ,
     	// output  wire [31:0]   psc         ,
@@ -388,4 +395,56 @@
     	// output  wire          cnt_valid   ,
     	// output  wire [31:0]   i_cnt       ,
     	// input wire [31:0]    o_cnt       ,
-    	// input wire           intr   slv_reg0[0]
+    	// input wire           intr   uart_sr[0]
+
+			// always @( posedge S_AXI_ACLK )
+	// begin
+	//   if ( S_AXI_ARESETN == 1'b0 )
+	//     begin
+	//       uart_sr <= 0;
+	//       uart_tdr <= 0;
+	//       uart_rdr <= 0;
+	//       uart_cr <= 0;
+	//     end 
+	//   else begin
+	//     if (slv_reg_wren)
+	//       begin
+	//         case ( axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] )
+	//           2'h0:
+	//             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
+	//               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
+	//                 // Respective byte enables are asserted as per write strobes 
+	//                 // Slave register 0
+	//                 uart_sr[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+	//               end  
+	//           2'h1:
+	//             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
+	//               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
+	//                 // Respective byte enables are asserted as per write strobes 
+	//                 // Slave register 1
+	//                 uart_tdr[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+	//               end  
+	//           2'h2:
+	//             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
+	//               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
+	//                 // Respective byte enables are asserted as per write strobes 
+	//                 // Slave register 2
+	//                 uart_rdr[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+	//               end  
+	//           2'h3:
+	//             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
+	//               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
+	//                 // Respective byte enables are asserted as per write strobes 
+	//                 // Slave register 3
+	//                 uart_cr[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+	//               end  
+	//           default : begin
+	//                       uart_sr <= uart_sr;
+	//                       uart_tdr <= uart_tdr;
+	//                       uart_rdr <= uart_rdr;
+	//                       uart_cr <= uart_cr;
+	//                     end
+	//         endcase
+	//       end
+	//   end
+	// end    
